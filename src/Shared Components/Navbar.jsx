@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "./../assets/logo.svg";
-// import PrimaryBtn from "./PrimaryBtn";
+import PrimaryBtn from "./PrimaryBtn";
 // import toast from "react-hot-toast";
 // import useAuth from "../Hooks/useAuth";
 import { IoMenuOutline } from "react-icons/io5";
