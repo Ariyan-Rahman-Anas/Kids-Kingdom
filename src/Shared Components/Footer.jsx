@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-// import Logo from "./../assets/Logo2.svg";
+import Logo from "./../assets//logo.svg";
 import { FaGoogle, FaLinkedin, FaInstagram, FaFacebookF } from "react-icons/fa";
 const Footer = () => {
   const currentDate = new Date();
@@ -74,7 +74,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="pt-10 pb-2 text-center">
-        Copy Right-{currentYear} || All rights reserved by Car Doctor ||
+        Copy Right-{currentYear} || All rights reserved by Kids Kingdom ||
         Developed by
         <a
           target="_blank"
