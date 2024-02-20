@@ -3,6 +3,7 @@ import Logo from "./../assets/logo.svg";
 import PrimaryBtn from "./PrimaryBtn";
 // import toast from "react-hot-toast";
 // import useAuth from "../Hooks/useAuth";
+// import useAuth from "./../Hooks/useAuth";
 import { IoMenuOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
@@ -104,7 +105,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end flex ">
           <div className="hidden md:block">
-            {/* <PrimaryBtn link={"/login"} value={"Appointment"}></PrimaryBtn> */}
+            <PrimaryBtn link={"/login"} value={"Log in"}></PrimaryBtn>
           </div>
           <div className="md:hidden">
             {menu ? (
