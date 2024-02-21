@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SectionTitle from "./SectionTitle";
 
 const Category = () => {
   const categoryData = [
@@ -31,6 +32,10 @@ const Category = () => {
 
   return (
     <div className="w-full lg:w-[85%] mx-auto my-20 px-2 ">
+      <SectionTitle
+        title={"OUR CATEGORY"}
+        subTitle={"Categories you'll love"}
+      ></SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:grid-cols-5 text-center text-sm ">
         {categoryData?.map((category, index) => (
           <div key={index} className="shadow-md rounded-md p-4 group ">
@@ -38,7 +43,7 @@ const Category = () => {
               <img
                 src={category.imgUrl}
                 alt="category img"
-                className="w-full md:group-hover:scale-150 md:group-hover:rotate-[360deg] duration-700 "
+                className="w-full md:group-hover:scale-125 md:group-hover:rotate-[360deg] duration-700 "
               />
             </div>
             <Link className="font-semibold group-hover:text-[#ca10ff] duration-500 ">

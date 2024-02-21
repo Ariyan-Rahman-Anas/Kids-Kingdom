@@ -52,7 +52,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="tex-white relative group">
-              <NavLink to={"/about"} className="group-hover:text-[#CA10FF]">
+              <NavLink to={"/addProduct"} className="group-hover:text-[#CA10FF]">
                 Add Product
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-[#CA10FF] transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
