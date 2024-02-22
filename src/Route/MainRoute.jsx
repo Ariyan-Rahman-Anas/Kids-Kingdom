@@ -4,6 +4,7 @@ import HomePage from "../Pages/Home/HomePage";
 import LogInPage from './../Pages/Login/LogInPage';
 import RegistrationPage from "../Pages/Registration/RegistrationPage";
 import AddProductPage from "../Pages/Add Product/AddProductPage";
+import MyCartPage from "../Pages/My Cart/MyCartPage";
 
 const MainRoute = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ const MainRoute = createBrowserRouter([
             {
                 path: "addProduct",
                 element:<AddProductPage></AddProductPage>
+            },
+            {
+                path: "myCart",
+                element:<MyCartPage></MyCartPage>
             },
             {
                 path: "login",

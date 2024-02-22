@@ -59,7 +59,7 @@ const Navbar = () => {
             </li>
             <li className="tex-white relative group">
               <NavLink
-                to={"/allServices"}
+                to={"/myCart"}
                 className="group-hover:text-[#CA10FF]"
               >
                 My Cart

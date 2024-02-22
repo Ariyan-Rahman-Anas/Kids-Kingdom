@@ -37,8 +37,8 @@ const AddProductPage = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          navigate("/")
           toast.success("Successfully added the product!");
+          navigate("/myCart");
         }
       });
   };
