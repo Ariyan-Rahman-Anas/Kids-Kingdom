@@ -6,6 +6,7 @@ import RegistrationPage from "../Pages/Registration/RegistrationPage";
 import AddProductPage from "../Pages/Add Product/AddProductPage";
 import MyCartPage from "../Pages/My Cart/MyCartPage";
 import PrivateRoute from "./PrivateRoute";
+import UpdateProductPage from "../Pages/Update Product/UpdateProductPage";
 
 const MainRoute = createBrowserRouter([
   {
@@ -27,6 +28,12 @@ const MainRoute = createBrowserRouter([
       {
         path: "myCart",
         element: <MyCartPage></MyCartPage>,
+        },
+        {
+            path: "updateProduct",
+            element: <PrivateRoute>
+                <UpdateProductPage></UpdateProductPage>
+            </PrivateRoute>
       },
       {
         path: "login",

@@ -4,7 +4,7 @@ const SectionTitle = ({ title, subTitle }) => {
       <h1 className="text-sm text-[#ca10ff] font-semibold underline ">
         {title}
       </h1>
-      <h2 className="text-3xl font-serif ">{subTitle}</h2>
+      <h2 className="text-3xl  ">{subTitle}</h2>
     </div>
   );
 };
