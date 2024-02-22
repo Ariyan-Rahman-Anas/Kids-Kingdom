@@ -1,31 +1,38 @@
 import { useNavigate } from "react-router-dom";
 import SectionTitle from "../../Shared Components/SectionTitle";
 import toast from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const AddProductPage = () => {
 
-  const navigate = useNavigate()
+  const {user} = useContext(AuthContext) 
+  const navigate = useNavigate();
   const handleSubmitForm = (e) => {
     e.preventDefault();
     const form = e.target;
+    const yourName = form.yourName.value
+    const email = form.email.value
     const imgUrl = form.imgUrl.value;
     const type = form.type.value;
     const brandName = form.brandName.value;
     const name = form.name.value;
     const price = form.price.value;
     const rating = form.rating.value;
-    const details = form.details.value
+    const details = form.details.value;
 
     const addedProductInfo = {
+      yourName, email,
       imgUrl,
       type,
       brandName,
       name,
       price,
-      rating, details
+      rating,
+      details,
     };
     console.log(addedProductInfo);
-    form.reset()
+    form.reset();
 
     fetch(`http://localhost:5001/products`, {
       method: "POST",
@@ -51,6 +58,24 @@ const AddProductPage = () => {
       ></SectionTitle>
       <form onSubmit={handleSubmitForm} className="form  ">
         <div className="formInput grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-4 mb-4 ">
+          <div>
+            <input
+              type="text"
+              required
+              name="yourName"
+              placeholder="Your name" defaultValue={user?.displayName || ""}
+              className="w-full p-2 rounded-md bg-gray-200 focus:outline-none focus:bg-purple-200 "
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              required
+              name="email"
+              placeholder="Your email" defaultValue={user?.email}
+              className="w-full p-2 rounded-md bg-gray-200 focus:outline-none focus:bg-purple-200 "
+            />
+          </div>
           <div>
             <input
               type="url"
