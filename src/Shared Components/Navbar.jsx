@@ -1,33 +1,31 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "./../assets/logo.svg";
 import PrimaryBtn from "./PrimaryBtn";
-// import toast from "react-hot-toast";
-// import useAuth from "../Hooks/useAuth";
-// import useAuth from "./../Hooks/useAuth";
+import toast from "react-hot-toast";
 import { IoMenuOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
-  // const { user, logOut } = useAuth();
-  // const navigate = useNavigate();
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
 
   const handleMenu = () => {
     setMenu(!menu);
   };
 
-  // const handleLogOut = () => {
-  //   logOut()
-  //     .then(() => {
-  //       navigate("/logIn");
-  //       toast.success("Log out Successful!");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //     });
-  // };
-
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        navigate("/logIn");
+        toast.success("Log out Successful!");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <div>
@@ -52,34 +50,27 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="tex-white relative group">
-              <NavLink to={"/addProduct"} className="group-hover:text-[#CA10FF]">
+              <NavLink
+                to={"/addProduct"}
+                className="group-hover:text-[#CA10FF]"
+              >
                 Add Product
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-[#CA10FF] transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
             <li className="tex-white relative group">
-              <NavLink
-                to={"/myCart"}
-                className="group-hover:text-[#CA10FF]"
-              >
+              <NavLink to={"/myCart"} className="group-hover:text-[#CA10FF]">
                 My Cart
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-[#CA10FF] transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
-            
 
-            {/* {user ? (
+            {user ? (
               <>
-                <li className="tex-white relative group">
-                  <NavLink
-                    to={"/myBookings"}
-                    className="group-hover:text-[#CA10FF]"
-                  >
-                    My Bookings
-                    <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-[#CA10FF] transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
-                  </NavLink>
-                </li>
-                <li onClick={handleLogOut} className="tex-white relative group">
+                <li
+                  onClick={handleLogOut}
+                  className="md:hidden tex-white relative group"
+                >
                   <NavLink to={"/logIn"} className="group-hover:text-[#CA10FF]">
                     Log out
                     <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-[#CA10FF] transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
@@ -87,25 +78,24 @@ const Navbar = () => {
                 </li>
               </>
             ) : (
-              <li className="tex-white relative group">
+              <li className="md:hidden tex-white relative group">
                 <NavLink to={"/logIn"} className="group-hover:text-[#CA10FF]">
                   Log in
                   <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-[#CA10FF] transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
                 </NavLink>
               </li>
             )}
-            {user ? (
-              ""
-            ) : (
-              <li className="md:hidden">
-                <PrimaryBtn value={"Appointment"} link={"/login"}></PrimaryBtn>
-              </li>
-            )} */}
           </ul>
         </div>
         <div className="navbar-end flex ">
           <div className="hidden md:block">
-            <PrimaryBtn link={"/login"} value={"Log in"}></PrimaryBtn>
+            {user ? (
+              <button onClick={handleLogOut}>
+                <PrimaryBtn link={"/login"} value={"Log out"}></PrimaryBtn>
+              </button>
+            ) : (
+              <PrimaryBtn link={"/login"} value={"Log in"}></PrimaryBtn>
+            )}
           </div>
           <div className="md:hidden">
             {menu ? (
