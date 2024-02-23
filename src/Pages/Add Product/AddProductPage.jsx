@@ -5,14 +5,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const AddProductPage = () => {
-
-  const {user} = useContext(AuthContext) 
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmitForm = (e) => {
     e.preventDefault();
     const form = e.target;
-    const yourName = form.yourName.value
-    const email = form.email.value
+    const yourName = form.yourName.value;
+    const email = form.email.value;
     const imgUrl = form.imgUrl.value;
     const type = form.type.value;
     const brandName = form.brandName.value;
@@ -22,7 +21,8 @@ const AddProductPage = () => {
     const details = form.details.value;
 
     const addedProductInfo = {
-      yourName, email,
+      yourName,
+      email,
       imgUrl,
       type,
       brandName,
@@ -34,7 +34,7 @@ const AddProductPage = () => {
     console.log(addedProductInfo);
     form.reset();
 
-    fetch(`http://localhost:5001/products`, {
+    fetch(`https://kids-kingdom-back-1wo2dzovz-anas4.vercel.app/products`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -63,7 +63,8 @@ const AddProductPage = () => {
               type="text"
               required
               name="yourName"
-              placeholder="Your name" defaultValue={user?.displayName || ""}
+              placeholder="Your name"
+              defaultValue={user?.displayName || ""}
               className="w-full p-2 rounded-md bg-gray-200 focus:outline-none focus:bg-purple-200 "
             />
           </div>
@@ -72,7 +73,8 @@ const AddProductPage = () => {
               type="text"
               required
               name="email"
-              placeholder="Your email" defaultValue={user?.email}
+              placeholder="Your email"
+              defaultValue={user?.email}
               className="w-full p-2 rounded-md bg-gray-200 focus:outline-none focus:bg-purple-200 "
             />
           </div>

@@ -10,12 +10,18 @@ const MyCartPage = () => {
   const { user } = useContext(AuthContext);
   const email = user?.email;
   const [yourProducts, setYourProducts] = useState([]);
-  useEffect(() => {
-    fetch(`http://localhost:5001/products?email=${email}`)
-      .then((res) => res.json())
-      .then((data) => setYourProducts(data));
-  }, [email]);
+    console.log(email, "okaaaaaaa");
+    
+    const url = `https://kids-kingdom-back-1wo2dzovz-anas4.vercel.app/products?email=${user?.email}`;
+    useEffect(() => {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          setYourProducts(data);
+        });
+    }, [url, user]);
 
+    
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: "btn btn-success",
@@ -23,31 +29,6 @@ const MyCartPage = () => {
     },
     buttonsStyling: true,
   });
-
-  // updatingCartItem
-  const handleUpdateItem = (id) => {
-    fetch(`http://localhost:5001/products/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ status: "Confirmed" }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          toast.success("Update Successful!");
-          const remaining = yourProducts.filter(
-            (product) => product._id !== id
-          );
-          const updated = yourProducts.find((product) => product._id === id);
-          updated.status = "Confirmed";
-          const newProducts = [updated, ...remaining];
-          setYourProducts(newProducts);
-        }
-      });
-  };
 
   //deleting cart item
   const handleDeleteCartItem = (id) => {
@@ -64,9 +45,12 @@ const MyCartPage = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5001/products/${id}`, {
-            method: "DELETE",
-          })
+          fetch(
+            `https://kids-kingdom-back-1wo2dzovz-anas4.vercel.app/products/${id}`,
+            {
+              method: "DELETE",
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
@@ -137,7 +121,7 @@ const MyCartPage = () => {
             </div>
             <p>{product.details}</p>
             <div className="mt-5 pb-1 flex items-center justify-between gap-5 ">
-              <button onClick={() => handleUpdateItem(_id)}>
+              <button>
                 <PrimaryBtn
                   value={"Update"}
                   link={"/updateProduct"}
