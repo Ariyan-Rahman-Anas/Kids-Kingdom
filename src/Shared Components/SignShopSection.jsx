@@ -16,7 +16,7 @@ const SignShopSection = () => {
     >
       <div className="text-center text-sm flex flex-col items-center md:flex-row md:px-20 gap-24">
         <div className="left group">
-          <div className="mb-20 md:-rotate-12 hover:rotate-0 duration-300 ">
+          <div className="mb-20 md:-rotate-12 group-hover:rotate-0 duration-300 ">
             <img src={leftBG} alt="" className="rounded-lg  w-full " />
           </div>
           <h1 className="text-2xl font-semibold text-[#ca10ff] ">
@@ -27,8 +27,8 @@ const SignShopSection = () => {
           </p>
           <PrimaryBtn value={"Sign up now"}></PrimaryBtn>
         </div>
-        <div className="right">
-          <div className="mb-20 md:rotate-12 hover:rotate-0 duration-300">
+        <div className="right group ">
+          <div className="mb-20 md:rotate-12 group-hover:rotate-0 duration-300">
             <img src={rightBG} alt="" className="rounded-lg w-full " />
           </div>
           <h1 className="text-2xl font-semibold text-[#ca10ff] ">
