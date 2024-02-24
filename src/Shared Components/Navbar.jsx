@@ -67,11 +67,6 @@ const Navbar = () => {
 
             {user ? (
               <>
-                <li>
-                  <div>
-                    <img src={user?.photoURL} alt="" />
-                  </div>
-                </li>
                 <li
                   onClick={handleLogOut}
                   className="md:hidden tex-white relative group"
@@ -95,9 +90,27 @@ const Navbar = () => {
         <div className="navbar-end flex ">
           <div className="hidden md:block">
             {user ? (
-              <button onClick={handleLogOut}>
-                <PrimaryBtn link={"/login"} value={"Log out"}></PrimaryBtn>
-              </button>
+              <>
+                <div className="group bg-purple-200 absolute top-6 right-4 z-40 flex flex-col items-center rounded-md hover:w-[20rem] hover:h-[10rem] ">
+                  <div className="h-10 w-10 absolute right-0 duration-500 ">
+                    <img
+                      src={user?.photoURL}
+                      alt="user photo"
+                      className="w-full rounded-full "
+                    />
+                  </div>
+                  <div className="absolute top-10 hidden group-hover:flex flex-col items-center text-sm ">
+                    <h1>{user?.displayName}</h1>
+                    <p>{user?.email} </p>
+                    <button onClick={handleLogOut} className="mt-5">
+                      <PrimaryBtn
+                        link={"/login"}
+                        value={"Log out"}
+                      ></PrimaryBtn>
+                    </button>
+                  </div>
+                </div>
+              </>
             ) : (
               <PrimaryBtn link={"/login"} value={"Log in"}></PrimaryBtn>
             )}
