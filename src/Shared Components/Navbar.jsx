@@ -67,6 +67,11 @@ const Navbar = () => {
 
             {user ? (
               <>
+                <li>
+                  <div>
+                    <img src={user?.photoURL} alt="" />
+                  </div>
+                </li>
                 <li
                   onClick={handleLogOut}
                   className="md:hidden tex-white relative group"
