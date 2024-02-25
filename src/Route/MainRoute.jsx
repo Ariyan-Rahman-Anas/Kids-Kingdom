@@ -7,6 +7,7 @@ import AddProductPage from "../Pages/Add Product/AddProductPage";
 import MyCartPage from "../Pages/My Cart/MyCartPage";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProductPage from "../Pages/Update Product/UpdateProductPage";
+import AboutPage from "../Pages/About/AboutPage";
 
 const MainRoute = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const MainRoute = createBrowserRouter([
       {
         path: "/",
         element: <HomePage></HomePage>,
+      },
+      {
+        path: "about",
+        element:<AboutPage></AboutPage>
       },
       {
         path: "addProduct",
@@ -28,12 +33,14 @@ const MainRoute = createBrowserRouter([
       {
         path: "myCart",
         element: <MyCartPage></MyCartPage>,
-        },
-        {
-            path: "updateProduct",
-            element: <PrivateRoute>
-                <UpdateProductPage></UpdateProductPage>
-            </PrivateRoute>
+      },
+      {
+        path: "updateProduct",
+        element: (
+          <PrivateRoute>
+            <UpdateProductPage></UpdateProductPage>
+          </PrivateRoute>
+        ),
       },
       {
         path: "login",
